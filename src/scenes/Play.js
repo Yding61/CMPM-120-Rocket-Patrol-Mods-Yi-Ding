@@ -5,11 +5,11 @@ class Play extends Phaser.Scene{
         super("playScene");
     }
 
-// rocket p1Rocket spear
+// key words index: rocket p1Rocket spear  spaceship shark   spaceshipSpeed  ship  
     preload() {
         // load images/title sprites
         this.load.image('spear','./assets/spear.png');
-        this.load.image('spaceship','./assets/spaceship.png');
+        this.load.image('shark','./assets/shark.png');
         this.load.image('starfield','./assets/starfield.png');
         // load spritesheet
         this.load.spritesheet('explosion','./assets/explosion.png',{frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
@@ -29,10 +29,10 @@ class Play extends Phaser.Scene{
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize,game.config.height, 0xFFFFFF).setOrigin(0, 0);   
         // add spear (p1)
         this.p1Spear = new Spear(this, game.config.width/2, game.config.height - borderUISize - borderPadding,'spear').setOrigin(0.5, 0);
-        // add spaceships (x3)
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0,30).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0,20).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width , borderUISize*6 + borderPadding*4, 'spaceship', 0,10).setOrigin(0, 0);
+        // add shark (x3)
+        this.ship01 = new Shark(this, game.config.width + borderUISize*6, borderUISize*4, 'shark', 0,30).setOrigin(0, 0);
+        this.ship02 = new Shark(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'shark', 0,20).setOrigin(0, 0);
+        this.ship03 = new Shark(this, game.config.width , borderUISize*6 + borderPadding*4, 'shark', 0,10).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -88,7 +88,7 @@ class Play extends Phaser.Scene{
             this.starfield.tilePositionX -= 4;
         if (!this.gameOver) {    
             this.p1Spear.update();
-            this.ship01.update();        // update spaceships (x3)
+            this.ship01.update();        // update sharks (x3)
             this.ship02.update();
             this.ship03.update();  
         }

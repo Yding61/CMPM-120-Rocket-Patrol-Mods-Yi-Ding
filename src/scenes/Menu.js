@@ -1,4 +1,4 @@
-// rocket  spear  
+// rocket  spear  spaceship  ship  sharkSpeed  spaceshipSpeed
 
 class Menu extends Phaser.Scene{
     constructor() {
@@ -45,7 +45,7 @@ class Menu extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             // easy mode
             game.settings = {
-                spaceshipSpeed: 3,
+                sharkSpeed: 3,
                 gameTimer: 60000
             }
             this.sound.play('sfx_select');
@@ -54,7 +54,7 @@ class Menu extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             // hard mode
             game.settings = {
-                spaceshipSpeed: 4,
+                sharkSpeed: 4,
                 gameTimer: 45000
             }
             this.sound.play('sfx_select');
