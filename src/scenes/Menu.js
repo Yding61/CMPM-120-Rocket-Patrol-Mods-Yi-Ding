@@ -1,4 +1,4 @@
-
+// rocket  spear  
 
 class Menu extends Phaser.Scene{
     constructor() {
@@ -17,7 +17,7 @@ class Menu extends Phaser.Scene{
     create() {
         // menu text configuration
         let menuConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'Fantasy',   //  change font
             fontSize: '28px',
             backgroundColor: '#F3B141',
             color: '#843605',

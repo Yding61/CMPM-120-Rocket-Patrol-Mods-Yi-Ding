@@ -1,5 +1,5 @@
-//  Rocket prefab
-class Rocket extends Phaser.GameObjects.Sprite{
+//  Spear prefab
+class Spear extends Phaser.GameObjects.Sprite{
     constructor(scene, x, y, texture, frame){
         super(scene, x, y, texture, frame);
 
@@ -43,7 +43,7 @@ class Rocket extends Phaser.GameObjects.Sprite{
         }
     }
 
-    // reset rocket to "ground"
+    // reset spear to "ground"
     reset() {
         this.isFiring = false;
         this.y = game.config.height - borderUISize - borderPadding;
