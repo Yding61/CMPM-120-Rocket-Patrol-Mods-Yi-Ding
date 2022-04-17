@@ -5,7 +5,7 @@ class Play extends Phaser.Scene{
         super("playScene");
     }
 
-// key words index: rocket p1Rocket spear  spaceship shark   spaceshipSpeed  ship  
+// key words index: rocket p1Rocket spear  spaceship shark   spaceshipSpeed  ship  firing
     preload() {
         // load images/title sprites
         this.load.image('spear','./assets/spear.png');
