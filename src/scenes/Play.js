@@ -5,12 +5,12 @@ class Play extends Phaser.Scene{
         super("playScene");
     }
 
-// key words index: rocket p1Rocket spear  spaceship shark   spaceshipSpeed  ship  firing
+// key words index: rocket p1Rocket spear  spaceship shark   spaceshipSpeed  ship  firing   starfield
     preload() {
         // load images/title sprites
-        this.load.image('spear','./assets/spear.png');
+        this.load.image('spear','./assets/spear.png');   // All of the images are painted by Yi Ding (myself) by "Pixel Studio for pixel art"
         this.load.image('shark','./assets/shark.png');
-        this.load.image('starfield','./assets/starfield.png');
+        this.load.image('ocean','./assets/ocean.png');
         // load spritesheet
         this.load.spritesheet('explosion','./assets/explosion.png',{frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
 
@@ -19,7 +19,7 @@ class Play extends Phaser.Scene{
     }
     create() {
         // place tile sprite
-        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
+        this.ocean = this.add.tileSprite(0, 0, 640, 480, 'ocean').setOrigin(0, 0);
         // green UI background   
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x0091ff).setOrigin(0, 0);
         // white borders
@@ -92,7 +92,7 @@ class Play extends Phaser.Scene{
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start("menuScene");
         }
-            this.starfield.tilePositionX -= 4;
+            this.ocean.tilePositionX -= 3;
         if (!this.gameOver) {    
             this.p1Spear.update();
             this.p2Spear.update();
