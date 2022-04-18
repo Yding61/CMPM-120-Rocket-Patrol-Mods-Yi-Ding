@@ -7,10 +7,10 @@ class Menu extends Phaser.Scene{
     
     preload() {
         // load audio
-        this.load.audio('sfx_select','./assets/blip_select12.wav');
-        this.load.audio('sfx_explosion','./assets/explosion38.wav');
-        this.load.audio('sfx_rocket','./assets/rocket_shot.wav');
-        this.load.audio('bgm','./assets/Oasis.mp3'); /// here is a music that is NOT copyfree, just use for background music testing
+        this.load.audio('sfx_select','./assets/game-fx.wav');       // the music is from "freesound", the author is "danlucaz" ,     "https://freesound.org/s/517758/"
+        this.load.audio('sfx_explosion','./assets/game-bump.mp3');  // the music is from "freesound", the author is "Raclure" ,      "https://freesound.org/s/483602/"
+        this.load.audio('sfx_rocket','./assets/bubble.wav');        // the music is from "freesound", the author is "javierserrat",  "https://javierserrat.wordpress.com", "https://freesound.org/s/485065/"
+        this.load.audio('bgm','./assets/dive-deep.mp3');            // the music is from "freesound", the author is "hisoul" ,       "https://www.asoundeffect.com/sound-library/dive-deep-2/" ,"https://freesound.org/s/493076/""
     }
 
     
@@ -31,11 +31,12 @@ class Menu extends Phaser.Scene{
         }
 
         // show menu text
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Deep Sea Hunting', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use ←→ arrows to move & (F) to fire',menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Deep Sea Hunting', menuConfig).setOrigin(0.5,2);
+        this.add.text(game.config.width/2, game.config.height/2, 'Player 1: Use (←),(→) arrows to move & (↑) to fire',menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'Player 2: Use (A),(D) to move & (W) to fire',menuConfig).setOrigin(0.5,-1);
         menuConfig.backgroundColor = '#e6f516';
         menuConfig.color = '#4b9fdb';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5,-2.5);
 
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
