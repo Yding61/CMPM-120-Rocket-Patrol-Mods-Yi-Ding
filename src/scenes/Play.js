@@ -21,12 +21,12 @@ class Play extends Phaser.Scene{
         // place tile sprite
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
         // green UI background   
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0, 0);
+        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x0091ff).setOrigin(0, 0);
         // white borders
-        this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize,0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);  
-        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize,game.config.height, 0xFFFFFF).setOrigin(0, 0);   
+        this.add.rectangle(0, 0, game.config.width, borderUISize, 0x014e8c).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize,0x014e8c).setOrigin(0, 0);
+        this.add.rectangle(0, 0, borderUISize, game.config.height, 0x014e8c).setOrigin(0, 0);  
+        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize,game.config.height, 0x014e8c).setOrigin(0, 0);   
         // add spear (p1)
         this.p1Spear = new Spear(this, game.config.width/2, game.config.height - borderUISize - borderPadding,'spear').setOrigin(0.5, 0);
         // add shark (x3)
@@ -53,7 +53,7 @@ class Play extends Phaser.Scene{
         let scoreConfig = {
             fontFamily: 'Fantasy',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
+            backgroundColor: '#41c4f3',
             color: '#FFFFFF',
             align: 'right',
             padding: {
