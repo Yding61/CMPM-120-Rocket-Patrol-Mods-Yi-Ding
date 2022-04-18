@@ -5,7 +5,7 @@ class Play extends Phaser.Scene{
         super("playScene");
     }
 
-// key words index: rocket p1Rocket spear  spaceship shark   spaceshipSpeed  ship  firing   starfield
+
     preload() {
         // load images/title sprites
         this.load.image('spear','./assets/spear.png');   // All of the images are painted by Yi Ding (myself) by "Pixel Studio for pixel art"
@@ -102,7 +102,7 @@ class Play extends Phaser.Scene{
         }
 
 
-        // check clooision
+        // check collision
         if (this.checkCollision(this.p1Spear, this.ship01)) {
             //console.log('kaboom ship 01')
             this.p1Spear.reset();
