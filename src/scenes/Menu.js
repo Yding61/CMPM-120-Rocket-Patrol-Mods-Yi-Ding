@@ -1,4 +1,4 @@
-// rocket  spear  spaceship  ship  sharkSpeed  spaceshipSpeed
+// rocket  spear  spaceship  ship  sharkSpeed  spaceshipSpeed  (index for searching)
 
 class Menu extends Phaser.Scene{
     constructor() {
@@ -10,6 +10,7 @@ class Menu extends Phaser.Scene{
         this.load.audio('sfx_select','./assets/blip_select12.wav');
         this.load.audio('sfx_explosion','./assets/explosion38.wav');
         this.load.audio('sfx_rocket','./assets/rocket_shot.wav');
+        this.load.audio('bgm','./assets/Oasis.mp3'); /// here is a music that is NOT copyfree, just use for background music testing
     }
 
     
@@ -39,6 +40,7 @@ class Menu extends Phaser.Scene{
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+       
     }
 
     update() {
@@ -50,6 +52,8 @@ class Menu extends Phaser.Scene{
             }
             this.sound.play('sfx_select');
             this.scene.start('playScene');
+            this.sound.play('bgm');
+
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             // hard mode
@@ -59,6 +63,7 @@ class Menu extends Phaser.Scene{
             }
             this.sound.play('sfx_select');
             this.scene.start('playScene');
+            this.sound.play('bgm');
         }
     }
 }

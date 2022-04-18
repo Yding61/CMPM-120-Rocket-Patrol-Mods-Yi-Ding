@@ -28,17 +28,24 @@ class Play extends Phaser.Scene{
         this.add.rectangle(0, 0, borderUISize, game.config.height, 0x014e8c).setOrigin(0, 0);  
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize,game.config.height, 0x014e8c).setOrigin(0, 0);   
         // add spear (p1)
-        this.p1Spear = new Spear(this, game.config.width/2, game.config.height - borderUISize - borderPadding,'spear').setOrigin(0.5, 0);
+        this.p1Spear = new Spear(this, game.config.width/2+40, game.config.height - borderUISize - borderPadding,'spear', 0, keyLEFT, keyRIGHT).setOrigin(0.5, 0);
+
+        // add spear (p2)
+        this.p2Spear = new Spear2(this, game.config.width/2-40, game.config.height - borderUISize - borderPadding,'spear', 0, keyA, keyD).setOrigin(0.5, 0);
+
         // add shark (x3)
         this.ship01 = new Shark(this, game.config.width + borderUISize*6, borderUISize*4, 'shark', 0,30).setOrigin(0, 0);
         this.ship02 = new Shark(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'shark', 0,20).setOrigin(0, 0);
         this.ship03 = new Shark(this, game.config.width , borderUISize*6 + borderPadding*4, 'shark', 0,10).setOrigin(0, 0);
 
         // define keys
-        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
-        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);  //   Player 1: W for Firing
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);  //   Player 1: A for Left moving
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);  //   Player 1: D for Right moving
+        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);  //   R for restart
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);  //   Player 2: left for left moving
+        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);  //   Player 2: right for Right moving
+        keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);  //   Player 2: up for player 2 firing
 
         //animation config
         this.anims.create({
@@ -88,6 +95,7 @@ class Play extends Phaser.Scene{
             this.starfield.tilePositionX -= 4;
         if (!this.gameOver) {    
             this.p1Spear.update();
+            this.p2Spear.update();
             this.ship01.update();        // update sharks (x3)
             this.ship02.update();
             this.ship03.update();  
@@ -113,8 +121,32 @@ class Play extends Phaser.Scene{
             //this.ship03.reset();
             this.shipExplode(this. ship03);
         }
+
+
+
+        // check clooision Spear 2
+        if (this.checkCollision(this.p2Spear, this.ship01)) {
+            //console.log('kaboom ship 01')
+            this.p2Spear.reset();
+            //this.ship01.reset();
+            this.shipExplode(this. ship01);
+        }
+        if (this.checkCollision(this.p2Spear, this.ship02)) {
+            //console.log('kaboom ship 02')
+            this.p2Spear.reset();
+            //this.ship02.reset();
+            this.shipExplode(this. ship02);
+        }
+        if (this.checkCollision(this.p2Spear, this.ship03)) {
+            //console.log('kaboom ship 03')
+            this.p2Spear.reset();
+            //this.ship03.reset();
+            this.shipExplode(this. ship03);
+        }
     }
 
+
+    
 
     checkCollision(spear, ship) {
         // simple AABB checking
